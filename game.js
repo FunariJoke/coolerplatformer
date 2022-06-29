@@ -16,12 +16,30 @@ var winningScore = 10;
 function addItems() {
   items = game.add.physicsGroup();
   createItem(375, 300, "coin");
+  createItem(450, 505, "coin");
+  createItem(150, 505, "coin");
+  createItem(300, 355, "coin");
+  createItem(150, 205, "coin");
+
+  createItem(300, 80, "coin");
+  createItem(650, 80, "coin");
+  createItem(50, 80, "coin");
+  createItem(50, 355, "coin");
 }
 
 // add platforms to the game
 function addPlatforms() {
   platforms = game.add.physicsGroup();
-  platforms.create(450, 150, "platform");
+  platforms.create(150, 500, "platform");
+  platforms.create(450, 500, "platform");
+  platforms.create(300, 350, "platform");
+  platforms.create(150, 200, "platform");
+  platforms.create(450, 200, "platform");
+
+  platforms.create(300, 75, "platform");
+  platforms.create(650, 75, "platform");
+  platforms.create(50, 75, "platform");
+  platforms.create(50, 350, "platform");
   platforms.setAll("body.immovable", true);
 }
 
