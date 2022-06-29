@@ -15,30 +15,32 @@ var winningScore = 10;
 // add collectable items to the game
 function addItems() {
   items = game.add.physicsGroup();
+  createItem(525, 150, "coin");
+  createItem(525, 450, "coin");
+  createItem(225, 450, "coin");
   createItem(375, 300, "coin");
-  createItem(450, 505, "coin");
-  createItem(150, 505, "coin");
-  createItem(300, 355, "coin");
-  createItem(150, 205, "coin");
-
-  createItem(300, 80, "coin");
-  createItem(650, 80, "coin");
-  createItem(50, 80, "coin");
-  createItem(50, 355, "coin");
+  createItem(225, 150, "coin");
+  createItem(525, 150, "star");
+  createItem(50, 225, "poison");
+  createItem(375, 25, "coin");
+  createItem(750, 25, "coin");
+  createItem(125, 25, "coin");
+  createItem(125, 300, "coin");
 }
+
 
 // add platforms to the game
 function addPlatforms() {
   platforms = game.add.physicsGroup();
   platforms.create(150, 500, "platform");
-  platforms.create(450, 500, "platform");
+  platforms.create(450, 500, "platform2");
   platforms.create(300, 350, "platform");
-  platforms.create(150, 200, "platform");
+  platforms.create(150, 200, "platform2");
   platforms.create(450, 200, "platform");
 
-  platforms.create(300, 75, "platform");
+  platforms.create(300, 75, "platform2");
   platforms.create(650, 75, "platform");
-  platforms.create(50, 75, "platform");
+  platforms.create(50, 75, "platform2");
   platforms.create(50, 350, "platform");
   platforms.setAll("body.immovable", true);
 }
@@ -65,6 +67,12 @@ function itemHandler(player, item) {
   if (currentScore === winningScore) {
     createBadge();
   }
+  if (item.key === "poison") {
+    currentScore = currentScore - 35
+  }
+  if (item.key === "star") {
+    currentScore = currentScore + 15
+  }
 }
 
 // when the player collects the badge at the end of the game
@@ -88,11 +96,14 @@ window.onload = function () {
 
     //Load images
     game.load.image("platform", "assets/platform_1.png");
+    game.load.image("platform2", "assets/platform_2.png");
 
     //Load spritesheets
     game.load.spritesheet("player", "assets/chalkers.png", 48, 62);
     game.load.spritesheet("coin", "assets/coin.png", 36, 44);
     game.load.spritesheet("badge", "assets/badge.png", 42, 54);
+    game.load.spritesheet("poison", "assets/poison.png", 32, 32);
+    game.load.spritesheet("star", "assets/star.png", 32, 32);
   }
 
   // initial game set up
